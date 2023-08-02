@@ -21,8 +21,8 @@
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Xpers</span>
         <span class="navbar-brand mb-0 h1" id="headingElement">0</span>
-
     </nav>
+
     <div class="container-fluid bg-light" style="min-height: 90vh">
         <div class="container">
             <div class="jumbotron mt-4">
@@ -63,25 +63,18 @@
                 </ul>
             </div>
 
-            <!-- <div id="tabledata"></div> -->
         </div>
     </div>
-    <!-- <div class="container  bg-dark"> -->
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top bg-dark">
-          <div class="col-md-4 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-              <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-            </a>
-            <span class="text-muted">&copy; 2023 created by Rushikesh Palakudtewar</span>
-          </div>
-      
-          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-instagram"></i></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-          </ul>
-        </footer>
-      <!-- </div> -->
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top bg-dark">
+        <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <span class="text-muted">&copy; 2023 created by Rushikesh Palakudtewar</span>
+        </div>
+    </footer>
+    
 <script>
     const headingEl=document.querySelector("#headingElement")
     let counter=0;
@@ -97,38 +90,25 @@
 
         const text=input.value
         const data=desc.value
-        // console.log({text});
 
-        //convert into number
         const expense = parseInt(text,10)
-        // console.log({data,expense});
-        
-        //added into the obj
+
         expenseItem.desc=data;
         expenseItem.amount=expense;
         expenseItem.moment=new Date()
-        //obj pushed into the array
+
         allexpenses.push(expenseItem)
-        //show into the table
-        console.table(allexpenses)
 
 
         counter =counter + expense
-        // console.log(counter);
-        // counter+=1;
-        // console.log(counter);
 
-        //creating the table
         renderList(allexpenses)
 
         const showText = `Total:${counter}`
         headingEl.textContent=showText
     }
     const element = document.querySelector("#btncounter");
-    // console.warn(element);
-
     element.addEventListener("click",counterIncrement,false)
-
     function getDateString(momentDate)
     {
         return momentDate.toLocaleDateString('en-US',{
@@ -144,22 +124,15 @@
 
         renderList(newArr)
     }
-
-
-    //viewing table
     function renderList(arroflist)
     {
         const showallexpenses = arroflist.map((expense)=>createListItem(expense))
-        // console.log(showallexpenses);
-
+    
         const joinexpensehtml=showallexpenses.join("");
-        // console.log(joinexpensehtml);
-
+    
         expensetable.innerHTML =joinexpensehtml;
     }
 
-    //destructing
-    //without curry brackets it returns obj
     function createListItem({desc,amount,moment})
     {
         return `<li class="list-group-item d-flex justify-content-between">
